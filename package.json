@@ -4,11 +4,15 @@
   "description": "A simple CRUD Application with Express and MongoDB",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
   },
   "author": "G. van Til",
   "license": "ISC",
   "dependencies": {
     "express": "^4.13.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.9.2"
   }
 }
