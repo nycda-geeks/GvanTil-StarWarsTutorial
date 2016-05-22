@@ -1,0 +1,14 @@
+{
+  "name": "starwarstutorial",
+  "version": "1.0.0",
+  "description": "A simple CRUD Application with Express and MongoDB",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "G. van Til",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
