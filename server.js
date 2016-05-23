@@ -20,7 +20,13 @@ app.use(bodyParser.urlencoded({extended: true}))
 
 app.get ('/', (request, response)=>{
 	response.sendFile (__dirname + '/index.html')
+	var cursor = db.collection('quotes').find().toArray(function(error, results){
+		console.log("MongoDB is loaded")
+		console.log (results)
+	})
+  	
 });
+
 
 app.post('/quotes', (request, response) => {
   db.collection('quotes').save(request.body, (error, result) => {
@@ -30,3 +36,4 @@ app.post('/quotes', (request, response) => {
     response.redirect('/')
   })
 })
+
