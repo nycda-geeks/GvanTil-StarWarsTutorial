@@ -5,6 +5,11 @@ const bodyParser = require ('body-parser')
 const app = express()
 const MongoClient = require('mongodb').MongoClient
 
+app.set('views', 'views'); 
+app.set('view engine', 'pug');
+
+app.use(express.static('resources'));
+
 var db
 
 MongoClient.connect('mongodb://starwars:test@ds011923.mlab.com:11923/starwarsquotes', (error, database) => {
@@ -27,6 +32,9 @@ app.get ('/', (request, response)=>{
   	
 });
 
+app.get ('/testpage', (request, response)=>{
+	response.render ('index')
+})
 
 app.post('/quotes', (request, response) => {
   db.collection('quotes').save(request.body, (error, result) => {
