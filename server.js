@@ -5,9 +5,15 @@ const bodyParser = require ('body-parser')
 const app = express()
 const MongoClient = require('mongodb').MongoClient
 
-MongoClient.connect('mongodb://<dbuser>:<dbpassword>@ds011923.mlab.com:11923/starwarsquotes', (err, database) => {
-  // ... start the server
-})
+var db
+
+MongoClient.connect('mongodb://starwars:test@ds011923.mlab.com:11923/starwarsquotes', (error, database) => {
+	if(error)return console.log (error)
+	db = database
+	app.listen(3000, function(){
+		console.log ('Listening on 3000')
+	}); 
+});
 
 app.use(bodyParser.urlencoded({extended: true}))
 
@@ -16,11 +22,11 @@ app.get ('/', (request, response)=>{
 	response.sendFile (__dirname + '/index.html')
 });
 
-app.post('/quotes', (req, res) => {
-  console.log(req.body)
+app.post('/quotes', (request, response) => {
+  db.collection('quotes').save(request.body, (error, result) => {
+    if (error) return console.log(error)
+
+    console.log('saved to database')
+    response.redirect('/')
+  })
 })
-
-
-app.listen(3000, function(){
-	console.log ('Listening on 3000')
-}) 
