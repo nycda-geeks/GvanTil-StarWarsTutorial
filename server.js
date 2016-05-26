@@ -1,45 +1,54 @@
 console.log('May Node be with you')
 
+// requiring Express
 const express = require('express')
-const bodyParser = require ('body-parser')
 const app = express()
+// requiring bodyparser
+const bodyParser = require ('body-parser')
+app.use(bodyParser.urlencoded({extended: true}))
+
+// requiring MongoDB
 const MongoClient = require('mongodb').MongoClient
 
+//View engine: PUG
 app.set('views', 'views'); 
 app.set('view engine', 'pug');
 
+// Static folder
 app.use(express.static('resources'));
 
+// database variable
 var db
 
+// connecting to mongo database
 MongoClient.connect('mongodb://starwars:test@ds011923.mlab.com:11923/starwarsquotes', (error, database) => {
-	if(error)return console.log (error)
+	// error handling
+	if(error){
+		return console.log (error)
+	}
 	db = database
 	app.listen(3000, function(){
 		console.log ('Listening on 3000')
 	}); 
 });
 
-app.use(bodyParser.urlencoded({extended: true}))
-
-
+// GET listening on '/'
 app.get ('/', (request, response)=>{
-	response.sendFile (__dirname + '/index.html')
 	var cursor = db.collection('quotes').find().toArray(function(error, results){
 		console.log("MongoDB is loaded")
 		console.log (results)
 	})
-  	
+  	response.render (__dirname + '/views/index.pug')
 });
 
-app.get ('/testpage', (request, response)=>{
-	response.render ('index')
-})
-
+// POST listening on '/quotes'
 app.post('/quotes', (request, response) => {
+// saving request.body to mongo database quotes
   db.collection('quotes').save(request.body, (error, result) => {
-    if (error) return console.log(error)
-
+// error handling
+   	if (error){
+    	return console.log(error)
+    }
     console.log('saved to database')
     response.redirect('/')
   })

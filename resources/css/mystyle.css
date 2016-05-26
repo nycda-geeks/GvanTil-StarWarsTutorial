@@ -1,5 +1,13 @@
+body{
+	font-family: 'Montserrat';
+}
+
 h1{
-	color: green;
+	text-align: center;
+}
+
+h3{
+	text-align: center;
 }
 
 #bannerimg img{
