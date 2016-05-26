@@ -26,9 +26,11 @@ app.get ('/', (request, response)=>{
 		var cursor= db.collection('quotes').find()
 		cursor.toArray(function(error, result){
 		console.log("MongoDB is loaded")
-		console.log (result)
+		var allMessages = result
+		var randomMessage = allMessages[Math.floor(Math.random()*allMessages.length)]
+		console.log(randomMessage)
 		response.render ('index', {
-  			quotes:result
+  			quotes:randomMessage
 		})
   });
 });

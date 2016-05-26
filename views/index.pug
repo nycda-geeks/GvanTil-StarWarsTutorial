@@ -14,14 +14,13 @@ html
 		link(href='https://fonts.googleapis.com/css?family=Montserrat', rel='stylesheet', type='text/css')
 	body
 		h1 May Node, Express, MongoDB and the Force be with you
-		
+
 		#bannerimg
 			img(src="http://www.f-covers.com/cover/star-wars-stormtroopers-peace-sign-facebook-cover-timeline-banner-for-fb.jpg")
 			h3 Click on the stormtrooper to see a star wars quote
-		#quote
-			each message in quotes
-				h4= message.name + " says:"
-				h4= message.quote
+		#quotes
+				h3= quotes.name + " says:"
+				h4= quotes.quote
 		#form
 			form(action='/quotes', method='POST')
 				input(type='text', placeholder='name', name='name')
