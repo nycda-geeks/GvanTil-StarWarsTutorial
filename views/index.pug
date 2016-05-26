@@ -3,6 +3,9 @@ html
 	head 
 		title Awesome Star Wars Quotes
 
+		//script
+		script(src='https://code.jquery.com/jquery-2.2.4.min.js', integrity='sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=', crossorigin='anonymous')
+
 		// stylesheets
 		link(rel='stylesheet', href='css/mystyle.css')
 
@@ -14,6 +17,9 @@ html
 			img(src="http://www.f-covers.com/cover/star-wars-stormtroopers-peace-sign-facebook-cover-timeline-banner-for-fb.jpg")
 			h3 Click on the stormtrooper to see a star wars quote
 		#quote
+			each message in quotes
+				h4= message.name
+				h4= message.quote
 		#form
 			form(action='/quotes', method='POST')
 				input(type='text', placeholder='name', name='name')

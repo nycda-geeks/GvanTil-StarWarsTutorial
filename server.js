@@ -20,25 +20,17 @@ app.use(express.static('resources'));
 // database variable
 var db
 
-// connecting to mongo database
-MongoClient.connect('mongodb://starwars:test@ds011923.mlab.com:11923/starwarsquotes', (error, database) => {
-	// error handling
-	if(error){
-		return console.log (error)
-	}
-	db = database
-	app.listen(3000, function(){
-		console.log ('Listening on 3000')
-	}); 
-});
 
 // GET listening on '/'
 app.get ('/', (request, response)=>{
-	var cursor = db.collection('quotes').find().toArray(function(error, results){
+		var cursor= db.collection('quotes').find()
+		cursor.toArray(function(error, result){
 		console.log("MongoDB is loaded")
-		console.log (results)
-	})
-  	response.render (__dirname + '/views/index.pug')
+		console.log (result)
+		response.render ('index', {
+  			quotes:result
+		})
+  });
 });
 
 // POST listening on '/quotes'
@@ -53,4 +45,16 @@ app.post('/quotes', (request, response) => {
     response.redirect('/')
   })
 })
+
+// connecting to mongo database
+MongoClient.connect('mongodb://starwars:test@ds011923.mlab.com:11923/starwarsquotes', (error, database) => {
+	// error handling
+	if(error){
+		return console.log (error)
+	}
+	db = database
+	app.listen(3000, function(){
+		console.log ('Listening on 3000')
+	}); 
+});
 
