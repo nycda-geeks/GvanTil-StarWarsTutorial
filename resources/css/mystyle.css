@@ -17,3 +17,16 @@ h3{
 	margin-right: auto;
 }
 
+#form input {
+	width: 300px;
+	height: 35px;
+	font-size: 1em ;
+	margin: 2px;
+}
+
+#form button {
+	width: 75px;
+	height: 35px;
+	font-size: 1em;
+}
+
