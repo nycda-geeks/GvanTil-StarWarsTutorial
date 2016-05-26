@@ -17,6 +17,10 @@ h3{
 	margin-right: auto;
 }
 
+#quotes {
+	font-size: 1.25em;
+}
+
 #form input {
 	width: 300px;
 	height: 35px;

@@ -46,6 +46,7 @@ app.get ('/api', (request, response)=>{
 		
 		var allMessages = result
 		var randomMessage = allMessages[Math.floor(Math.random()*allMessages.length)]
+		console.log(randomMessage)
 		response.send (randomMessage)
   });
 });
