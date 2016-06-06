@@ -6,6 +6,7 @@ const app = express()
 // requiring bodyparser
 const bodyParser = require ('body-parser')
 app.use(bodyParser.urlencoded({extended: true}))
+app.set('port', (process.env.PORT || 5000));
 
 // requiring MongoDB
 const MongoClient = require('mongodb').MongoClient
@@ -13,6 +14,7 @@ const MongoClient = require('mongodb').MongoClient
 //View engine: PUG
 app.set('views', 'views'); 
 app.set('view engine', 'pug');
+
 
 // Static folder
 app.use(express.static('resources'));
@@ -27,9 +29,9 @@ MongoClient.connect('mongodb://starwars:test@ds011923.mlab.com:11923/starwarsquo
 		return console.log (error)
 	}
 	db = database
-	app.listen(3000, function(){
-		console.log ('Listening on 3000')
-	}); 
+	app.listen(app.get('port'), function() {
+	  console.log('Node app is running on port', app.get('port'));
+	});
 });
 
 

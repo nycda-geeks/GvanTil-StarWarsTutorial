@@ -2,6 +2,9 @@
   "name": "starwarstutorial",
   "version": "1.0.0",
   "description": "A simple CRUD Application with Express and MongoDB",
+  "engines": { 
+    "node" : "6.0.0"
+  },
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -17,7 +20,5 @@
   },
   "devDependencies": {
     "nodemon": "^1.9.2"
-  },
-  "engines" : { 
-    "node" : "6.0.0" } }
+  }
 }
