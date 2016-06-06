@@ -1,0 +1,7 @@
+{
+  "name": "StarWars Quotes App",
+  "description": "An app based on a tutorial that renders random StarWars Quote from a Mongo database.",
+  "repository": "https://github.com/nycda-geeks/GvanTil-StarWarsTutorial.git",
+  "keywords": ["node", "express", "static"],
+  "image": "heroku/nodejs"
+}
