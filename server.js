@@ -21,10 +21,10 @@ app.use(express.static('resources'));
 
 // database variable
 var db
-console.log (process.env.MONGODB_PURPLE_URI)
+console.log (process.env.MONGOLAB_PURPLE_URI)
 
 // connecting to mongo database
-MongoClient.connect(process.env.MONGODB_PURPLE_URI, (error, database) => {
+MongoClient.connect(process.env.MONGOLAB_PURPLE_URI, (error, database) => {
 	// error handling
 	if(error){
 		return console.log (error)
