@@ -54,18 +54,18 @@ app.get ('/api', (request, response)=>{
   });
 });
 
-// POST listening on '/quotes'
-app.post('/quotes', (request, response) => {
-// saving request.body to mongo database quotes
-  db.collection('quotes').save(request.body, (error, result) => {
-// error handling
-   	if (error){
-    	return console.log(error)
-    }
-    console.log('saved to database')
-    response.redirect('/')
-  })
-})
+// // POST listening on '/quotes'
+// app.post('/quotes', (request, response) => {
+// // saving request.body to mongo database quotes
+//   db.collection('quotes').save(request.body, (error, result) => {
+// // error handling
+//    	if (error){
+//     	return console.log(error)
+//     }
+//     console.log('saved to database')
+//     response.redirect('/')
+//   })
+// })
 
 
 
