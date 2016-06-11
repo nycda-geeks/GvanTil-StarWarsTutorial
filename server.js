@@ -21,9 +21,10 @@ app.use(express.static('resources'));
 
 // database variable
 var db
+console.log (process.env.MONGODB_URI)
 
 // connecting to mongo database
-MongoClient.connect('mongodb://starwars:test@ds011923.mlab.com:11923/starwarsquotes', (error, database) => {
+MongoClient.connect(MONGODB_PURPLE_URI, (error, database) => {
 	// error handling
 	if(error){
 		return console.log (error)
@@ -53,18 +54,18 @@ app.get ('/api', (request, response)=>{
   });
 });
 
-// // POST listening on '/quotes'
-// app.post('/quotes', (request, response) => {
-// // saving request.body to mongo database quotes
-//   db.collection('quotes').save(request.body, (error, result) => {
-// // error handling
-//    	if (error){
-//     	return console.log(error)
-//     }
-//     console.log('saved to database')
-//     response.redirect('/')
-//   })
-// })
+// POST listening on '/quotes'
+app.post('/quotes', (request, response) => {
+// saving request.body to mongo database quotes
+  db.collection('quotes').save(request.body, (error, result) => {
+// error handling
+   	if (error){
+    	return console.log(error)
+    }
+    console.log('saved to database')
+    response.redirect('/')
+  })
+})
 
 
 
